@@ -1,10 +1,12 @@
 package com.bezkoder.spring.datajpa.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,7 +23,7 @@ import com.bezkoder.spring.datajpa.repository.UserRepository;
 public class UserControler {
 	@Autowired
 	UserRepository userRepository;
-                      
+
 	@PostMapping("/users")
 	public ResponseEntity<User> Registration(@RequestBody User user) {
 		try {
@@ -47,6 +49,7 @@ public class UserControler {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
 	@PutMapping("/user/{id}")
 	public ResponseEntity<User> ResetPassword(@PathVariable("userId") int userId, String currentPassword,
 			String newPassword, @RequestBody User user) {
@@ -56,13 +59,25 @@ public class UserControler {
 			_user.setUserId(user.getUserId());
 			_user.setCurrentPassword(user.getCurrentPassword());
 			_user.setNewPassword(user.getNewPassword());
-			
 
 			return new ResponseEntity<>(userRepository.save(_user), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<List<User>> GetUser(@PathVariable("userId") int userId, @RequestBody User user) {
+		try {
+			List<User> userData = userRepository.findByUserId(userId);
+
+			if (userData.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			} else {
+				return new ResponseEntity<>(userData, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 }
-	
