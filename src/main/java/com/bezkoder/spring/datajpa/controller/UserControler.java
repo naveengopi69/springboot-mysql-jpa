@@ -47,7 +47,6 @@ public class UserControler {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
 	@PutMapping("/user/{id}")
 	public ResponseEntity<User> ResetPassword(@PathVariable("userid") int userid, String currentPassword,
 			String newPassword, @RequestBody User user) {
@@ -65,3 +64,4 @@ public class UserControler {
 		}
 	}
 }
+	
