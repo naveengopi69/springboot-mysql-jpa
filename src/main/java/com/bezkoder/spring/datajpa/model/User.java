@@ -33,6 +33,10 @@ public class User {
 	@Column
 	private String password;
 	@Column
+	private String currentPassword;
+	@Column
+	private String newPassword;
+	@Column
 	private String mobile;
 	
 	
@@ -48,6 +52,8 @@ public class User {
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.currentPassword=currentPassword;
+		this.newPassword=newPassword;
 		this.mobile = mobile;
 	}
 	
@@ -128,6 +134,22 @@ public class User {
 		this.username = username;
 	}
 
+	public String getCurrentPassword() {
+		return currentPassword;
+	}
+
+	public void setCurrentPassword(String currentPassword) {
+		this.currentPassword = currentPassword;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -145,6 +167,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ",email=\" + email + \", username=\" + username + \", password=\" + password + \", mobile=\" + mobile + \",]";
+		return "User [userId=" + userId + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ",email=\" + email + \", username=\" + username + \", password=\" + password + \", mobile=\" + mobile + \",currentPassword=\\\" + currentPassword + \\\", newPassword=\\\" + newPassword + \\\",]";
 	}
+
+	
 }

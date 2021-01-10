@@ -33,9 +33,9 @@ public class ExpenseControler {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-/*
+	
 	@PutMapping("/expenses/{id}")
-	public ResponseEntity<Tutorial> updateExpense(@PathVariable("id") int id, @RequestBody Expense expense) {
+	public ResponseEntity<Expense> EditExpense(@PathVariable("id") int id, @RequestBody Expense expense) {
 		Optional<Expense> expenseData = expenseRepository.findById(id);
 
 		if (expenseData.isPresent()) {
@@ -46,9 +46,11 @@ public class ExpenseControler {
 			expense.setPrice(expense.getPrice());
 			expense.setTotal(expense.getTotal());
 			expense.setBywhom(expense.getBywhom());
-			return new ResponseEntity<>(ExpenseRepository.save(_expense), HttpStatus.OK);
+			return new ResponseEntity<>(expenseRepository.save(_expense), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		*/
+		
+	}
 }
+
