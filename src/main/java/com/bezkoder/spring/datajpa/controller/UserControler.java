@@ -48,9 +48,9 @@ public class UserControler {
 		}
 	}
 	@PutMapping("/user/{id}")
-	public ResponseEntity<User> ResetPassword(@PathVariable("userid") int userid, String currentPassword,
+	public ResponseEntity<User> ResetPassword(@PathVariable("userId") int userId, String currentPassword,
 			String newPassword, @RequestBody User user) {
-		Optional<User> userData = userRepository.findById(userid);
+		Optional<User> userData = userRepository.findById(userId);
 		if (userData.isPresent()) {
 			User _user = userData.get();
 			_user.setUserId(user.getUserId());
