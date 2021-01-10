@@ -21,7 +21,7 @@ import com.bezkoder.spring.datajpa.repository.UserRepository;
 public class UserControler {
 	@Autowired
 	UserRepository userRepository;
-
+                      
 	@PostMapping("/users")
 	public ResponseEntity<User> Registration(@RequestBody User user) {
 		try {
