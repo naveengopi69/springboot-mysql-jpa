@@ -34,6 +34,11 @@ public class ExpenseControler {
 		}
 	}
 	
+	
+	
+	
+	
+	
 	@PutMapping("/expenses/{id}")
 	public ResponseEntity<Expense> EditExpense(@PathVariable("id") int id, @RequestBody Expense expense) {
 		Optional<Expense> expenseData = expenseRepository.findById(id);
