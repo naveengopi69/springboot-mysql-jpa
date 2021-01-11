@@ -33,12 +33,7 @@ public class ExpenseControler {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	
-	
-	
-	
-	
+//ijigjerpogherjq[qe
 	@PutMapping("/expenses/{id}")
 	public ResponseEntity<Expense> EditExpense(@PathVariable("id") int id, @RequestBody Expense expense) {
 		Optional<Expense> expenseData = expenseRepository.findById(id);
@@ -55,7 +50,7 @@ public class ExpenseControler {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		//abcdef
+	
 	}
 	@DeleteMapping("/expense/{id}")
 	public ResponseEntity<HttpStatus> deleteExpense(@PathVariable("expenseId") int id) {
